@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Tribe - retaurant</title>
+    <title>Tribe - restaurant</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     
@@ -79,20 +79,22 @@
     <!-- END nav -->
 
     <div class="jumbotron jumbotron-fluid bigBanner">
+
         <div class="container">
           <h1 class="display-4">TRIBE</h1>
           <p class="lead text-white">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p>
         </div>
       </div>
 
-    <!--Shopping badge-->
+   
+      <!--Shopping badge-->
     <div class="container-fluid mt-5" style="margin-left:55px;">
         <div class="row block-5">
           <div class="col-md-7">
             <div class="col-md-5 contact-info ftco-animate">
 
                 <div class="row">
-                <div class="col-md-12 mb-4">
+                <div class="col-md-12 col-sm-12 mb-4" style=";">
                     <h2 class="btnShopTag">Shopping Cart</h2>
                 </div>
                 </div>
@@ -105,7 +107,7 @@
     <div class="container-fluid">
       <div class="row">
 
-        <div class="col-lg-9">
+        <div class="col-lg-9 col-sm-12">
             @if(session::has('cart'))
       
             <div class="container">
@@ -115,14 +117,14 @@
               <div class="col-lg-12">
       
                 
-              <div class="col-lg-9">
+              <div class="col-lg-9 col-sm-12">
                     <table class="table table-bordered table-dark">
                         <thead>
                           <tr>
                             {{-- <th scope="col">#</th> --}}
                             {{-- <th scope="col">Product</th> --}}
                             <th scope="col">Product Name</th>
-                            <th scope="col">Amount</th>
+                            <th scope="col">Quantity</th>
                             <th scope="col">Total</th>
                             <th scope="col">Edit</th>
                           </tr>
@@ -143,8 +145,8 @@
                                   </button>
                                   
                                   <ul class="dropdown-menu">
-                                    <li><a href="#" style="color:black; padding:10px;">reduce by 1</a></li>
-                                    <li><a href="#" style="color:black; padding-left:10px;">reduce all</a></li>
+                                  <li><a href="{{route('product.reduceByOne', ['id'=> $product['item']['id']])}}" style="color:black; padding:10px;">reduce by 1</a></li>
+                                    <li><a href="{{route('product.remove', ['id'=> $product['item']['id']])}}" style="color:black; padding-left:10px;">reduce all</a></li>
                                   </ul>
                               </div>
                             </td>
@@ -157,10 +159,12 @@
                       
                 
                 <hr>
-                <div class="col-md-4 col-md-offset-3">
+                <div class="col-md-4 col-md-offset-3 col-sm-12">
                   <h3><strong style="color:#fff; font-weight:bolder;">Total: ₦{{$totalPrice}}</strong></h3>
                   <button style="border-radius:5px; width:100px; height:40px; font:bolder; text-align:center; font-size:17px;" type="button" class="btn btn-success btn-lg">Checkout</button>
                 </div>
+
+                <br>
       
       
           
@@ -176,9 +180,10 @@
         </div>
         </div>
         </div>
-
-        <div class="col-lg-3">
-            <div class="card" style="width: 18rem;">
+          <br>
+          <br>
+        <div class="col-lg-3 col-sm-12 mt-20">
+            <div class="card" style="width: 18rem;" style="">
                 <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
                     <div class="carousel-inner">
                       <div class="carousel-item active">

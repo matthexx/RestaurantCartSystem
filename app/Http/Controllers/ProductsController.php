@@ -6,6 +6,7 @@ use App\Product;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use Session;
+use Auth;
 
 class ProductsController extends Controller
 {
@@ -51,6 +52,32 @@ class ProductsController extends Controller
 
         $request->session()->put('cart', $cart);
         return redirect()->route('product.menu');
+    }
+
+    public function getReduceByOne($id){
+        $oldCart = Session::has('cart') ? Session::get('cart') : null;
+        $cart = new Cart($oldCart);
+        $cart->reduceByOne($id);
+        if(count($cart->items) > 0){
+            Session::put('cart', $cart);
+        }else{
+            Session::forget('cart');
+        }
+        return redirect()->route('product.cart');
+    }
+
+    public function getRemoveItem($id){
+        $oldCart = Session::has('cart') ? Session::get('cart') : null;
+        $cart = new Cart($oldCart);
+        $cart->removeItem($id);
+
+        if(count($cart->items) > 0){
+            Session::put('cart', $cart);
+        }else{
+            Session::forget('cart');
+        }
+      
+        return redirect()->route('product.cart');
     }
 
     public function getCart(){
